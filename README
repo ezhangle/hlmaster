@@ -1,0 +1,85 @@
+HLMaster readme               last updated Saturday, 22. December 2001
+
+
+
+Function and purpose ::...............................................
+----------------------------------------------------------------------
+
+	HLMaster implements a fully functional, automatic master-server
+	daemon for the game Half-life (and all mods based on this engine).
+
+	Because the master-server protocol is not open, I had to figure
+	it out myself. Some features might not be implemented, some may
+	be 'wrong'. However, all basically required features should work.
+
+	I have tested hlmaster with the following query-tools:
+	
+	  o GameSpy  - http://www.gamespy.com
+	  o QStat    - http://www.qstat.org
+
+
+	If you encounter any problems with any query tool, please
+	send an e-mail to bullet@users.sourceforge.net.
+
+	Note: Current versions of gamespy are incapable of receiving more
+	      than 230 gameservers from hlmaster. This limitation comes
+	      from GameSpy, not hlmaster (GameSpy is using an old protocol).
+
+	Check http://hlmaster.sourceforge.net for newest version.
+
+
+Documentation ::......................................................
+----------------------------------------------------------------------
+
+	Documentation is provided within the 'doc' directory. On Linux,
+	the manfiles are installed by 'make install' as well.
+	
+	Additionally, there is an html version of the manfiles in the
+	doc/html directory.
+
+	Please note: The documentation might not allways be up to date.
+
+
+
+Additional files ::...................................................
+----------------------------------------------------------------------
+
+	  o COPYING       License information.
+	  o AUTHORS       List of authors working on this project.
+	  o NEWS          Human readable list of major changes.
+	  o ChangeLog     Raw list of changes.
+	  o TODO          List of unimplemented features.
+	  o INSTALL       Basic installation instructions.
+
+
+
+Example files ::......................................................
+----------------------------------------------------------------------
+
+	These files should be found in the 'examples' directory.
+	
+	  o woncomm.lst   A sample master configuration for half-life.
+	  o server.list   A sample gameserver list for hlmaster.
+	  o filter.list   A sample gameserver filter list for hlmaster.
+
+
+	Check the documentation for more information.
+
+
+
+Copyright ::..........................................................
+----------------------------------------------------------------------
+
+	Copyright (c) 2001 Silvan Minghetti
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+
+Legal notes ::........................................................
+----------------------------------------------------------------------
+
+	Half-Life is a trademark of valve software.
+

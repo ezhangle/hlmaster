@@ -1,0 +1,19 @@
+# example hlmaster gameserver list
+#
+# syntax: [check/nocheck] ip:port
+#
+# ATTENTION:
+#  - case is sensitive for keywords
+#  - hostnames are not allowed (only ip's)
+#
+
+# aaa swiss counterstrike
+check 194.209.69.205:27015
+
+nocheck 194.209.69.205:27020	# l33t s3rv3r, n3v3r d0wn
+
+# some other servers
+# note, if you do not specify check/nocheck, it will
+# default to 'check'
+123.123.123.123:27015
+143.235.112.145:27020

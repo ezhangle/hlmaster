@@ -1,0 +1,5 @@
+TODO list for HLMaster           last updated Monday, 29. October 2001
+----------------------------------------------------------------------
+
+* Implement the full new protocol which has filtering capabilities.
+* Add ability to chroot.

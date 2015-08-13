@@ -1,0 +1,91 @@
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<pre>
+
+hlmaster.gameserver(1)     User Manual     hlmaster.gameserver(1)
+
+
+
+<b>NAME</b>
+       <b>hlmaster.gameserver</b>  - How to configure your gameserver to
+       send heartbeats to hlmaster.
+
+
+<b>DESCRIPTION</b>
+       If  you  want   to   get   your   gameserver   dynamically
+       added/removed  from your master-server, you'll have to add
+       an entry into the file <i>woncomm.lst</i>.  This file is  located
+       within  the gameservers mod directory (eg. valve, cstrike,
+       tfc...).
+       There might be no <i>woncomm.lst</i> in  a  mods  directory,  but
+       that  doesnt  really  matter.  You can either copy the one
+       found in the valve directory, or just leave it  there  and
+       edit  it.  If Half-Life does not find a <i>woncomm.lst</i> in the
+       mod's directory, it defaults to using the one found in the
+       valve directory.
+
+       After  editing  your <i>woncomm.lst</i>, it's required to restart
+       your gameserver for the changes to take effect. To verify,
+       your  gameserver is really sending heartbeats to your mas-
+       ter, you can go to the Half-Life console and  enter  <i>'set-</i>
+       <i>master'</i> - respectivly <i>'rcon</i> <i>setmaster'</i>.
+       You  should  now  get  a lists of the currently configured
+       master-servers. You can also add  a  master-server,  while
+       half-life  is  running.  This is performed with <i>'setmaster</i>
+       <i>add</i> <b>ip</b> <b>port'</b> - where <b>ip</b> is your master server's ip-address
+       (eg.  194.209.69.205)  and  <b>port</b> is it's port-number (nor-
+       mally 27010).
+
+       NOTE: Configuration changes made with the  setmaster  com-
+       mand  only  remain  active  till next gameserver shutdown.
+       Therefore, you'll have to edit your <i>woncomm.lst</i> anyway.
+
+
+<b>EXAMPLES</b>
+       An example <i>woncomm.lst</i> is  provided  within  the  examples
+       directory  of  the  source distribution. However, here's a
+       short example of the master section:
+
+            Master
+            {
+                 <b>your.server.com:27010</b>
+                 half-life.east.won.net:27010
+                 half-life.west.won.net:27010
+                 half-life.central.won.net:27010
+            }
+
+
+<b>REPORTING</b> <b>BUGS</b>
+       Report bugs to &lt;<a href="mailto:bullet@users.sourceforge.net">bullet@users.sourceforge.net</a>&gt;.
+
+
+<b>AUTHOR</b>
+       Silvan Minghetti &lt;<a href="mailto:bullet@users.sourceforge.net">bullet@users.sourceforge.net</a>&gt;.
+
+
+<b>COPYRIGHT</b>
+       Copyright (c) 2001 Silvan Minghetti
+       This is free software; see the source for  copying  condi-
+       tions.  There is NO warranty; not even for MERCHANTABILITY
+       or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+<b>LEGAL</b> <b>NOTES</b>
+       Half-Life is a trademark of valve software.
+
+
+<b>SEE</b> <b>ALSO</b>
+       <b><a href="./hlmaster.html">hlmaster</a></b>(1), <b><a href="./hlmaster.list.html">hlmaster.list</a></b>(1), <b><a href="./hlmaster.filter.html">hlmaster.filter</a></b>(1)
+
+       Check  <a href="http://hlmaster.sourceforge.net">http://hlmaster.sourceforge.net</a> for newest version.
+
+
+
+HLMaster                   22 June 2001    hlmaster.gameserver(1)
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,131 @@
+.\"	Copyright (C) 2001 Silvan Minghetti
+.\"
+.\" This program is free software; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License
+.\"	as published by the Free Software Foundation; either version 2
+.\" of the License, or (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+.\"	02111-1307, USA.
+.\"
+.\"
+.\" Process this file with "groff -man -Tascii"
+.\"
+.TH "hlmaster.list" "1" "22 June 2001" "HLMaster" "User Manual"
+.SH NAME
+.BR "hlmaster.list" " \- How to load your own list of gameservers."
+
+.SH DESCRIPTION
+This document describes, how the config-file has to look like, for loading
+into
+.BR "hlmaster" " with the " "--server-list" " argument."
+.br
+You might also want to start
+.BR "hlmaster" " with the " "--closed" " argument. See " "hlmaster" "(1)"
+for more information.
+
+Create an empty text-file and insert one gameserver per line
+with the following syntax:
+
+.I		type ip-address port
+
+Please note that you cannot pass a hostname, you absolutely have to give
+.B hlmaster
+an
+.IR "ip-address" "."
+.br
+The
+.I port
+however is not required (27015 is presumed then).
+The
+.IR "ip-address" " and the " "port"
+have to be separated by a ':' or by at least one space/tab character. Servers
+loaded by --server-list are limited to 3000. The overall limit with dynamically
+added servers is 60000.
+.br
+
+The
+.I type
+definition has to be passed in front of the host, but you
+may optionally ommit it completly (check is taken by default).
+
+.B Available types:
+.TP
+.B "check"
+The gameservers loaded from your list do not send heartbeats. To prevent your
+list of containing dead servers, this options turns on pinging the servers
+every five minutes. This is also the default, if no type was specified.
+.br
+Note:
+.B hlmaster
+automagically converts servers marked as
+.B check
+to 'dynamic' upon receipt of a heartbeat/challenge and thereby removes them if they stop sending beats.
+.TP
+.B nocheck
+Servers marked with
+.B nocheck
+will never time out! They will remain in the list, even if
+they are dead. This option actually should not be used.
+.br
+Note:
+.BR "hlmaster" " does not convert " "nocheck" " servers upon receipt of a heartbeat."
+.PP
+
+Note: Case is not ignored! Enshure you write the type definition in lowercase.
+
+Comments are also allowed and initiated with the familiar '#' sign. They
+may begin everywhere in a line and remain active until the end of line.
+
+Look at the SIGNALS section in the
+.BR "hlmaster" "(1)"
+manpage for instructions on reloading the filters, while hlmaster is running.
+
+.SH EXAMPLES
+An example
+.I server.list
+is provided within the examples directory of the source distribution. However, here's
+a short example:
+
+.nf
+	# example hlmaster gameserver list
+
+	# aaa swiss counterstrike
+	check	194.209.69.205:27015
+
+	# l33t s3rv3r, n3v3r d0wn
+	nocheck	194.209.69.205:27020
+	
+	# some other servers
+	123.123.123.123	27015
+	234.234.234.234	27015
+.fi
+
+.SH "REPORTING BUGS"
+Report bugs to <bullet@users.sourceforge.net>.
+
+.SH AUTHOR
+Silvan Minghetti <bullet@users.sourceforge.net>.
+
+.SH COPYRIGHT
+Copyright (c) 2001 Silvan Minghetti
+.br
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+.SH "LEGAL NOTES"
+Half-Life is a trademark of valve software.
+
+.SH "SEE ALSO"
+.BR "hlmaster" "(1),"
+.BR "hlmaster.filter" "(1),"
+.BR "hlmaster.gameserver" "(1)"
+
+Check http://hlmaster.sourceforge.net for newest version.

@@ -1,0 +1,172 @@
+.\"	Copyright (C) 2001 Silvan Minghetti
+.\"
+.\" This program is free software; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License
+.\"	as published by the Free Software Foundation; either version 2
+.\" of the License, or (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+.\"	02111-1307, USA.
+.\"
+.\"
+.\" Process this file with "groff -man -Tascii"
+.\"
+.TH "hlmaster" "1" "22 December 2001" "HLMaster" "User Manual"
+.SH NAME
+.BR "hlmaster" " \- A Half-Life master server daemon (made in switzerland)"
+
+.SH SYNOPSIS
+.B hlmaster [
+.I options
+.B ]
+
+.SH DESCRIPTION
+.B hlmaster
+is a standalone, automatic master server for Half-Life. It accepts
+heartbeats from gameservers and keeps an actual list of gameservers.
+.br
+
+To get a gameserver listet by hlmaster, you'll have to configure it
+accordingly. See
+.BR "hlmaster.gameserver" "(1)"
+for more information.
+
+Additionally, you might want to load a list of servers from a file.
+This is not the normal operation for a real master-server, but it's
+a nice feature for your own little master. See
+.BR "hlmaster.list" "(1)"
+for more information.
+
+.SH OPTIONS
+.TP
+.B "-V, --version"
+Display version of
+.B hlmaster
+and exit.
+.TP
+.B "-h, --help"
+Print a help screen.
+.TP
+.BI "-n " "number" ", --log-level=" "number"
+Set log level of the info-log as numeric value. (0=none, 1=critical,
+2=error, 3=warning, 4=info, 5=debug). The default level is 4 (info).
+.TP
+.B "-d, --no-daemon"
+If activated,
+.B hlmaster
+does not go to background at startup. This is usefull for
+debugging and is turned off by default.
+.TP
+.BI "-u " "user" ", --user=" "user"
+.RB "Run " "hlmaster"
+.RI "as " "user" "."
+.TP
+.BI "-g " "group" ", --group=" "group"
+.RB "Run " "hlmaster"
+.RI "as " "group" "."
+.TP
+.BI "-a " "address" ", --ip-address=" "address"
+Set the network interface
+.I address
+to listen on. You'll have to supply a numeric ip-address,
+hostnames are not resolved. The default is to listen
+on all interfaces (0.0.0.0).
+.TP
+.BI "-p " "port" ", --port=" "port"
+Set the
+.I port
+to listen on. The default is 27010, which is also the
+official port for Half-Life master servers.
+.TP
+.BI "-s " "name" ", --master-name=" "name"
+Set the
+.IR "name" ","
+the master server will report to clients. Though
+I do not really know, if this feature is used by any client.
+.TP
+.BI "-m " "number" ", --max-servers=" "number"
+Set the maximum
+.I number
+of gameservers, that are allowed to fit in the list. The
+default is 200, the absolute maximum 60000.
+.br Please note: Current gamespy versions are not able to
+fetch more than 230 servers (they use an old protocol).
+.TP
+.BI "-l " "file" ", --server-list=" "file"
+Load a list of gameservers (max. 3000) from
+.I file.
+See
+.BR "hlmaster.list" "(1)"
+for further information.
+.TP
+.B "-c, --closed"
+If activated, the master does not accept any heartbeats. You will
+have to specify a list of gameservers to be loaded, otherwise
+.B hlmaster
+would have nothing to do.
+.TP
+.BI "-P " "file" ", --pid-file=" "file"
+Write process id (PID) to
+.IR "file" "."
+Remember to use absolute paths, if you start
+.B hlmaster
+as daemon process.
+.TP
+.BI "-I " "file" ", --info-log=" "file"
+Log informations to
+.I file.
+Remember to use absolute paths, if you start
+.B hlmaster
+as daemon process.
+.TP
+.BI "-A " "file" ", --access-log=" "file"
+Log access information to file. Remember to use absolute paths,
+if you start
+.B hlmaster
+as daemon process.
+
+.SH SIGNALS
+.TP
+.B SIGTERM
+Abort
+.B hlmaster
+immediatly.
+.TP
+.B SIGHUP
+Reload configuration and logfiles.
+.TP
+.B SIGUSR1
+Reload configuration files only. Please note, that the configuration files are
+not reloaded immediatly, but allways before the next request.
+.TP
+.B SIGUSR2
+Reload logfiles only.
+
+.SH "REPORTING BUGS"
+Report bugs to <bullet@users.sourceforge.net>.
+
+.SH AUTHOR
+Silvan Minghetti <bullet@users.sourceforge.net>.
+
+.SH COPYRIGHT
+Copyright (c) 2001 Silvan Minghetti
+.br
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+.SH "LEGAL NOTES"
+Half-Life is a trademark of valve software.
+
+.SH "SEE ALSO"
+.BR "hlmaster.list" "(1),"
+.BR "hlmaster.filter" "(1),"
+.BR "hlmaster.gameserver" "(1)"
+
+Check http://hlmaster.sourceforge.net for newest version.

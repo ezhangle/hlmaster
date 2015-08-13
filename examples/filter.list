@@ -1,0 +1,41 @@
+# example hlmaster filter list
+#
+# order:
+#    order allow
+#    order deny
+#
+# default:
+#    default allow
+#    default deny
+#
+# allow:
+#    allow 124.134.123.124/255.255.255.255
+#
+# deny:
+#    deny 124.134.123.124/255.255.255.255
+#
+#
+# ATTENTION:
+#  - hlmaster is case sensitive
+#  - hostnames are not allowed (only ip's)
+#
+
+# deny rules are stronger then allow rules
+order deny
+
+# allow all unspecified servers by default
+default allow
+
+
+
+# allow some server
+allow 194.209.69.205/255.255.255.255	# aaa swiss counterstrike
+
+
+# deny some server
+deny 123.123.123.123/255.255.255.255	# s0me sux0r
+deny 145.242.21.147 					# no mask defaults to 255.255.255.255
+
+
+# deny a whole network
+deny 127.0.0.0/255.0.0.0

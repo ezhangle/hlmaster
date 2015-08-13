@@ -1,0 +1,120 @@
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<pre>
+
+hlmaster.list(1)           User Manual           hlmaster.list(1)
+
+
+
+<b>NAME</b>
+       <b>hlmaster.list</b>  - How to load your own list of gameservers.
+
+
+<b>DESCRIPTION</b>
+       This document describes, how the config-file has  to  look
+       like,  for  loading  into  <b>hlmaster</b> with the <b>--server-list</b>
+       argument.
+       You might also want to start <b>hlmaster</b>  with  the  <b>--closed</b>
+       argument. See <b><a href="./hlmaster.html">hlmaster</a></b>(1) for more information.
+
+       Create  an  empty  text-file and insert one gameserver per
+       line with the following syntax:
+
+            <i>type</i> <i>ip-address</i> <i>port</i>
+
+       Please note that you cannot pass  a  hostname,  you  abso-
+       lutely have to give <b>hlmaster</b> an <i>ip-address</i>.
+       The <i>port</i> however is not required (27015 is presumed then).
+       The <i>ip-address</i> and the <i>port</i> have to be separated by a  ':'
+       or  by at least one space/tab character. Servers loaded by
+       --server-list are limited to 3000. The overall limit  with
+       dynamically added servers is 60000.
+
+       The <i>type</i> definition has to be passed in front of the host,
+       but you may optionally ommit it completly (check is  taken
+       by default).
+
+       <b>Available</b> <b>types:</b>
+
+       <b>check</b>  The  gameservers  loaded from your list do not send
+              heartbeats. To prevent your list of containing dead
+              servers,  this options turns on pinging the servers
+              every five minutes. This is also the default, if no
+              type was specified.
+              Note:   <b>hlmaster</b>   automagically  converts  servers
+              marked as <b>check</b> to  'dynamic'  upon  receipt  of  a
+              heartbeat/challenge  and  thereby  removes  them if
+              they stop sending beats.
+
+       <b>nocheck</b>
+              Servers marked with <b>nocheck</b> will  never  time  out!
+              They  will  remain  in  the  list, even if they are
+              dead. This option actually should not be used.
+              Note: <b>hlmaster</b> does  not  convert  <b>nocheck</b>  servers
+              upon receipt of a heartbeat.
+
+
+       Note: Case is not ignored! Enshure you write the type def-
+       inition in lowercase.
+
+       Comments are also allowed and initiated with the  familiar
+       '#'  sign.  They may begin everywhere in a line and remain
+       active until the end of line.
+
+       Look at the SIGNALS section in the <b><a href="./hlmaster.html">hlmaster</a></b>(1) manpage for
+       instructions  on  reloading the filters, while hlmaster is
+       running.
+
+
+<b>EXAMPLES</b>
+       An example <i>server.list</i> is  provided  within  the  examples
+       directory  of  the  source distribution. However, here's a
+       short example:
+
+            # example hlmaster gameserver list
+
+            # aaa swiss counterstrike
+            check     194.209.69.205:27015
+
+            # l33t s3rv3r, n3v3r d0wn
+            nocheck   194.209.69.205:27020
+
+            # some other servers
+            123.123.123.123     27015
+            234.234.234.234     27015
+
+
+<b>REPORTING</b> <b>BUGS</b>
+       Report bugs to &lt;<a href="mailto:bullet@users.sourceforge.net">bullet@users.sourceforge.net</a>&gt;.
+
+
+<b>AUTHOR</b>
+       Silvan Minghetti &lt;<a href="mailto:bullet@users.sourceforge.net">bullet@users.sourceforge.net</a>&gt;.
+
+
+<b>COPYRIGHT</b>
+       Copyright (c) 2001 Silvan Minghetti
+       This is free software; see the source for  copying  condi-
+       tions.  There is NO warranty; not even for MERCHANTABILITY
+       or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+<b>LEGAL</b> <b>NOTES</b>
+       Half-Life is a trademark of valve software.
+
+
+<b>SEE</b> <b>ALSO</b>
+       <b><a href="./hlmaster.html">hlmaster</a></b>(1), <b><a href="./hlmaster.filter.html">hlmaster.filter</a></b>(1), <b><a href="./hlmaster.gameserver.html">hlmaster.gameserver</a></b>(1)
+
+       Check  <a href="http://hlmaster.sourceforge.net">http://hlmaster.sourceforge.net</a> for newest version.
+
+
+
+HLMaster                   22 June 2001          hlmaster.list(1)
+</pre>
+</body>
+</html>
+

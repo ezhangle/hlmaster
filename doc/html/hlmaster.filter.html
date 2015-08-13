@@ -1,0 +1,122 @@
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<pre>
+
+hlmaster.filter(1)         User Manual         hlmaster.filter(1)
+
+
+
+<b>NAME</b>
+       <b>hlmaster.filter</b> - How to allow/block specific gameservers.
+
+
+<b>DESCRIPTION</b>
+       This document describes, how the config-file has  to  look
+       like,  for  loading into <b>hlmaster</b> with the <b>--server-filter</b>
+       argument.
+
+       These filter rules allow you, to allow/deny specific game-
+       servers and as well complete networks.
+       You  can  however  not  ban a gameserver upon his port. At
+       least one ip-address is filtered.
+
+       Please note, that server filtering  has  not  been  tested
+       through and through yet.
+
+
+<b>COMMANDS</b>
+       Commands are case-sensitive, so enshure you write them all
+       in lowercase and only one command per line.
+
+       The following commands are used to  configure  some  basic
+       settings:
+
+       <b>default</b> <i>allow</i> <b>|</b> <i>deny</i>
+              This  sets the default behaviour, what to do, if no
+              specific filter rule could be found.
+              If you  ommit  this  default  rule,  <i>deny</i>  will  be
+              applied.
+
+       <b>order</b> <i>allow</i> <b>|</b> <i>deny</i>
+              This  determines,  if  a deny rule takes precedence
+              over an allow rule and vice versa.
+
+
+       Now, the commands used to deny/allow hosts/networks:
+
+            <b>allow</b> <i>ip-address</i> <b>[</b> <i>netmask</i> <b>]</b>
+            <b>deny</b>  <i>ip-address</i> <b>[</b> <i>netmask</i> <b>]</b>
+
+
+       This will allow or  deny  the  host  given  by  <i>ip-address</i>
+       (hostnames  are  not  allowed).   If  no <i>netmask</i> is given,
+       255.255.255.255 is assumed - wich  leads  to  filtering  a
+       single host. And this is normally exactly what you want.
+       I'm  not  going to describe netmasks any further, you will
+       never need them anyway...
+
+       Comments are also allowed and initiated with the  familiar
+       '#'  sign.  They may begin everywhere in a line and remain
+       active until the end of line.
+
+       Look at the SIGNALS section in the <b><a href="./hlmaster.html">hlmaster</a></b>(1) manpage for
+       instructions  on  reloading the filters, while hlmaster is
+       running.
+
+
+<b>EXAMPLES</b>
+       An example <i>filter.list</i> is  provided  within  the  examples
+       directory  of  the  source distribution. However, here's a
+       short example:
+
+            # example hlmaster filter list
+
+            order deny
+            default allow
+
+            # aaa swiss counterstrike
+            allow     194.209.69.205
+
+            # some sux0rz
+            deny 123.123.123.123
+            deny 194.216.124.21
+
+            # localhost network
+            deny 127.0.0.0 255.0.0.0
+
+
+
+<b>REPORTING</b> <b>BUGS</b>
+       Report bugs to &lt;<a href="mailto:bullet@users.sourceforge.net">bullet@users.sourceforge.net</a>&gt;.
+
+
+<b>AUTHOR</b>
+       Silvan Minghetti &lt;<a href="mailto:bullet@users.sourceforge.net">bullet@users.sourceforge.net</a>&gt;.
+
+
+<b>COPYRIGHT</b>
+       Copyright (c) 2001 Silvan Minghetti
+       This is free software; see the source for  copying  condi-
+       tions.  There is NO warranty; not even for MERCHANTABILITY
+       or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+<b>LEGAL</b> <b>NOTES</b>
+       Half-Life is a trademark of valve software.
+
+
+<b>SEE</b> <b>ALSO</b>
+       <b><a href="./hlmaster.html">hlmaster</a></b>(1), <b><a href="./hlmaster.list.html">hlmaster.list</a></b>(1), <b><a href="./hlmaster.gameserver.html">hlmaster.gameserver</a></b>(1)
+
+       Check  <a href="http://hlmaster.sourceforge.net">http://hlmaster.sourceforge.net</a> for newest version.
+
+
+
+HLMaster                   22 June 2001        hlmaster.filter(1)
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,153 @@
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<pre>
+
+hlmaster(1)                User Manual                hlmaster(1)
+
+
+
+<b>NAME</b>
+       <b>hlmaster</b>  -  A  Half-Life  master  server  daemon (made in
+       switzerland)
+
+
+<b>SYNOPSIS</b>
+       <b>hlmaster</b> <b>[</b> <i>options</i> <b>]</b>
+
+
+<b>DESCRIPTION</b>
+       <b>hlmaster</b> is a  standalone,  automatic  master  server  for
+       Half-Life.  It  accepts  heartbeats  from  gameservers and
+       keeps an actual list of gameservers.
+
+       To get a gameserver listet by  hlmaster,  you'll  have  to
+       configure  it  accordingly. See <b><a href="./hlmaster.gameserver.html">hlmaster.gameserver</a></b>(1) for
+       more information.
+
+       Additionally, you might want to load  a  list  of  servers
+       from  a file.  This is not the normal operation for a real
+       master-server, but it's a nice feature for your own little
+       master. See <b><a href="./hlmaster.list.html">hlmaster.list</a></b>(1) for more information.
+
+
+<b>OPTIONS</b>
+       <b>-V,</b> <b>--version</b>
+              Display version of <b>hlmaster</b> and exit.
+
+       <b>-h,</b> <b>--help</b>
+              Print a help screen.
+
+       <b>-n</b> <i>number</i><b>,</b> <b>--log-level=</b><i>number</i>
+              Set  log  level  of  the info-log as numeric value.
+              (0=none, 1=critical,  2=error,  3=warning,  4=info,
+              5=debug). The default level is 4 (info).
+
+       <b>-d,</b> <b>--no-daemon</b>
+              If activated, <b>hlmaster</b> does not go to background at
+              startup. This  is  usefull  for  debugging  and  is
+              turned off by default.
+
+       <b>-u</b> <i>user</i><b>,</b> <b>--user=</b><i>user</i>
+              Run <b>hlmaster</b> as <i>user</i>.
+
+       <b>-g</b> <i>group</i><b>,</b> <b>--group=</b><i>group</i>
+              Run <b>hlmaster</b> as <i>group</i>.
+
+       <b>-a</b> <i>address</i><b>,</b> <b>--ip-address=</b><i>address</i>
+              Set  the  network  interface  <i>address</i> to listen on.
+              You'll have to supply a numeric  ip-address,  host-
+              names are not resolved. The default is to listen on
+              all interfaces (0.0.0.0).
+
+       <b>-p</b> <i>port</i><b>,</b> <b>--port=</b><i>port</i>
+              Set the <i>port</i> to listen on. The  default  is  27010,
+              which  is also the official port for Half-Life mas-
+              ter servers.
+
+       <b>-s</b> <i>name</i><b>,</b> <b>--master-name=</b><i>name</i>
+              Set the <i>name</i>, the  master  server  will  report  to
+              clients.  Though I do not really know, if this fea-
+              ture is used by any client.
+
+       <b>-m</b> <i>number</i><b>,</b> <b>--max-servers=</b><i>number</i>
+              Set the maximum <i>number</i>  of  gameservers,  that  are
+              allowed to fit in the list. The default is 200, the
+              absolute maximum 60000.
+              fetch more than 230 servers (they use an old proto-
+              col).
+
+       <b>-l</b> <i>file</i><b>,</b> <b>--server-list=</b><i>file</i>
+              Load  a  list of gameservers (max. 3000) from <i>file.</i>
+              See <b><a href="./hlmaster.list.html">hlmaster.list</a></b>(1) for further information.
+
+       <b>-c,</b> <b>--closed</b>
+              If activated, the master does not accept any heart-
+              beats.  You  will  have  to specify a list of game-
+              servers to be loaded, otherwise <b>hlmaster</b> would have
+              nothing to do.
+
+       <b>-P</b> <i>file</i><b>,</b> <b>--pid-file=</b><i>file</i>
+              Write  process  id  (PID) to <i>file</i>.  Remember to use
+              absolute paths, if you  start  <b>hlmaster</b>  as  daemon
+              process.
+
+       <b>-I</b> <i>file</i><b>,</b> <b>--info-log=</b><i>file</i>
+              Log informations to <i>file.</i>  Remember to use absolute
+              paths, if you start <b>hlmaster</b> as daemon process.
+
+       <b>-A</b> <i>file</i><b>,</b> <b>--access-log=</b><i>file</i>
+              Log access information to  file.  Remember  to  use
+              absolute  paths,  if  you  start <b>hlmaster</b> as daemon
+              process.
+
+
+<b>SIGNALS</b>
+       <b>SIGTERM</b>
+              Abort <b>hlmaster</b> immediatly.
+
+       <b>SIGHUP</b> Reload configuration and logfiles.
+
+       <b>SIGUSR1</b>
+              Reload configuration files only. Please note,  that
+              the  configuration  files  are not reloaded immedi-
+              atly, but allways before the next request.
+
+       <b>SIGUSR2</b>
+              Reload logfiles only.
+
+
+<b>REPORTING</b> <b>BUGS</b>
+       Report bugs to &lt;<a href="mailto:bullet@users.sourceforge.net">bullet@users.sourceforge.net</a>&gt;.
+
+
+<b>AUTHOR</b>
+       Silvan Minghetti &lt;<a href="mailto:bullet@users.sourceforge.net">bullet@users.sourceforge.net</a>&gt;.
+
+
+<b>COPYRIGHT</b>
+       Copyright (c) 2001 Silvan Minghetti
+       This is free software; see the source for  copying  condi-
+       tions.  There is NO warranty; not even for MERCHANTABILITY
+       or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+<b>LEGAL</b> <b>NOTES</b>
+       Half-Life is a trademark of valve software.
+
+
+<b>SEE</b> <b>ALSO</b>
+       <b><a href="./hlmaster.list.html">hlmaster.list</a></b>(1),    <b><a href="./hlmaster.filter.html">hlmaster.filter</a></b>(1),    <b><a href="./hlmaster.gameserver.html">hlmaster.game-</a></b></font>
+       <b><a href="./hlmaster.gameserver.html">server</a></b>(1)
+
+       Check  <a href="http://hlmaster.sourceforge.net">http://hlmaster.sourceforge.net</a> for newest version.
+
+
+
+HLMaster                 22 December 2001             hlmaster(1)
+</pre>
+</body>
+</html>
+

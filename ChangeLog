@@ -1,0 +1,140 @@
+
+
+2001-12-22  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Added --user and --group options to run as user/group.
+	* Updated man/hlmaster.1 accordingly.
+
+
+2001-12-15  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Added debug function HLServerList::LogSnapshot().
+
+
+2001-11-27  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Fixed a nullpointer exception in HLServerList::HeartBeat.
+	* Added HLInfoList.cpp and HLInfoList.h to Makefile.am in
+	  src and include.
+
+
+2001-11-07  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Moved HeartBeat logic to HLServerList class.
+	* Moved Challenge Id logic to HLServerList class.
+
+
+2001-11-03  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Changed serverinfo datatypes to use less memory.
+	* Redesigned the CheckTimeout function.
+	* Converted HLServerList to a doubly linked list.
+	* Number of bad-checks set to 1 for new hosts.
+	* Number of bad-checks set to 2 for loaded hosts.
+	* Removed ping code (replaced by details request/reply).
+	* Changed max listsize to 60'000.
+	* Limited number of servers loadable by --server-list
+	  to 3'000.
+	* Servers loaded via --server-list are getting checked
+	  in a bunch of 100 servers every 10 seconds. If you
+	  load a lot of servers, it'll take a while until they
+	  get checked (max 5 minutes).
+
+
+2001-11-01  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Send a details request instead of a ping request to
+	  servers loaded by --server-list.
+	* Created HLInfoList - which is used to save the
+	  gamedir and mapname status informations.
+
+
+2001-10-30  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Randomized the challenge number in HLMaster to prevent
+	  denial of service with spoofed ip's.
+	* Moved the challenge string parsing logic into the
+	  HLMaster class.
+	* Challenge infos changed a bit with hl version 1.1.0.8:
+	   - Old: \dedicated\1
+	   - New: \type\d
+	* Hosts replying with an invalid challenge id are
+	  now rejected to prevent flooding with spoofed ip's.
+
+
+2001-10-30  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* ServerList and FilterList Load functions now return
+	  the number of successfully loaded servers instead
+	  of true/false.
+
+
+2001-10-29  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Added basic (no filtering) support for the Half-Life
+	  ingame browser.
+	* Fixed a bug concerning gamespy. If the list had more
+	  than 230 entries, gamespy did not display any of them.
+	* Changed #ifdef __linux__ to PFC_SYSTEM_UNIX - which in
+	  fact checks for __linux__, __FreeBSD__, __NetBSD__.
+
+
+2001-07-04  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* The custom servername (--server-name) is now allways
+	  prefixed by "HLMaster 0.9.2 - ".
+	* List type2 request was broken (returned bad index, only
+	  occured with more than about 340 servers).
+
+
+2001-06-29  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Added --server-filter option.
+	* SIGUSR1 now reloads configuration files only.
+	* SIGUSR2 now reloads logfiles only.
+
+
+2001-06-28  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Created CStringBuffer class, and use it for creating
+	  the log-strings.
+	* Increased and improved log-messages.
+
+
+2001-06-27  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Removed multi-master code complety (main.cpp).
+	* Split input processing (ProcessInput) into multiple
+	  functions. (HLMaster.cpp)
+	* Select is now performed on the Socket object directly,
+	  instead of requireing a PFileDescriptor object. The
+	  PFileDescriptor class might be a subject to drop completly.
+	* Gameservers which send a hearbeat but do not respond
+	  to the challenge request wont be listed by list requests.
+	  They are not deleted, because they're still heartbeating.
+
+
+2001-06-23  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Tabs in the --server-list are now accepted.
+	* Changed some argument names (--host-list to --server-list,
+	  --server-name to --master-name, ...).
+
+
+2001-06-22  Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Removed --error-log. All errors are now reported
+	  within the --info-log.
+	* Added --host-list. You can now load a list of hosts
+	  instead of waiting for them to send a heartbeat.
+	* Added --private-mode. If you load hosts, you may
+	  go into private mode. This adds ban filter for all
+	  hosts, so only the ones in your host-list are accepted.
+	* The access-log now does not use the log-level value
+	  specified with --log-level. It's allways on level "Info".
+	* Invalid queries are logged only with log-level "Debug".
+
+
+2001-06-15   Silvan Minghetti  <bullet@users.sourceforge.net>
+
+	* Initial release.
