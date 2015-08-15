@@ -997,7 +997,7 @@ int HLServerList::FillPacket_Halflife(int nSkip, char *pBuffer, int nBufferSize,
 {
 	int nSize;
 	int nCount;
-	int nTotalSkipped;
+	int nTotalSkipped = 0;
 
 	HLServerListItem *pCurrent = m_pFirstItem->m_pNextItem;
 
@@ -1005,7 +1005,7 @@ int HLServerList::FillPacket_Halflife(int nSkip, char *pBuffer, int nBufferSize,
 	unsigned short *pShort= (unsigned short*) (pBuffer + 4);
 
 
-	if(nBufferSize < 1 || m_nItems == 0 || nSkip >= m_nItems)
+	/*if(nBufferSize < 1 || m_nItems == 0 || nSkip >= m_nItems)
 		return 0;
 
 	// skip if necessary
@@ -1015,7 +1015,7 @@ int HLServerList::FillPacket_Halflife(int nSkip, char *pBuffer, int nBufferSize,
 		if(pCurrent->m_nBadChecks < 2 || pCurrent->m_nType == HLServerListItem::c_TYPE_STATIC_NOCHECK)
 			nCount++;
 	}
-	nTotalSkipped = nCount;
+	nTotalSkipped = nCount;*/
 
 
 	// copy to buffer
