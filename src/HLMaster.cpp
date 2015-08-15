@@ -130,7 +130,7 @@ const int  HLMaster::m_nPkgSize_Servername  = sizeof(HLMaster::m_pPackage_Server
 const char HLMaster::m_pPackage_List_Type1[]= { '\xff', '\xff', '\xff', '\xff', 'd', '\n' };
 const int  HLMaster::m_nPkgSize_List_Type1  = sizeof(HLMaster::m_pPackage_List_Type1);
 
-const char HLMaster::m_pPackage_List_Type2[]= { '\xff', '\xff', '\xff', '\xff', 'f', '\r' };
+const char HLMaster::m_pPackage_List_Type2[]= { '\xff', '\xff', '\xff', '\xff', 'f', '\n' };
 const int  HLMaster::m_nPkgSize_List_Type2  = sizeof(HLMaster::m_pPackage_List_Type2);
 
 const char HLMaster::m_pPackage_List_Auth[] = { '\xff', '\xff', '\xff', '\xff', 'w', '\r', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0' };
@@ -1048,23 +1048,7 @@ void HLMaster::ProcessEnhancedListRequest()
 	memcpy(m_szBuffer, m_pPackage_List_Type2, m_nPkgSize_List_Type2);
 
 	// get the list
-	// skip 4 bytes (required for num items, \0\0)
-	nSize = m_pServerList->FillPacket_Halflife(nSkip, &m_szBuffer[(m_nPkgSize_List_Type2 + 4)], (sizeof(m_szBuffer) - m_nPkgSize_List_Type2 - 4), &nSkippedItems, &bHasMore);
-
-	// write the 4 bytes skipped before
-	if(bHasMore == true)
-	{
-		// write number of items to skip into packet
-		*((unsigned short*) &m_szBuffer[m_nPkgSize_List_Type2]) = htons(nSkippedItems);
-	}
-	else
-	{
-		// 0 marks the end of the server list
-		*((unsigned short*) &m_szBuffer[m_nPkgSize_List_Type2]) = 0;
-	}
-	m_szBuffer[m_nPkgSize_List_Type2 + 2] = 0;
-	m_szBuffer[m_nPkgSize_List_Type2 + 3] = 0;
-
+	nSize = m_pServerList->FillPacket_Halflife(nSkip, &m_szBuffer[(m_nPkgSize_List_Type2)], (sizeof(m_szBuffer) - m_nPkgSize_List_Type2), &nSkippedItems, &bHasMore);
 
 	m_pServerSocket->Send(m_szBuffer, m_nPkgSize_List_Type2 + nSize + 4);
 }
