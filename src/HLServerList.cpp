@@ -73,7 +73,7 @@ HLServerList::HLServerList(int nMaxItems, PLogfile *pInfoLog)
 	m_nSkipRequests = 0;
 
 	// initialize challenge number (should be random)
-	m_nChallengeSeed    = (int) &m_pHeadDummyItem;
+	m_nChallengeSeed    = time(NULL);
 }
 
 
@@ -604,7 +604,7 @@ HLServerListItem* HLServerList::HeartBeat(pfc_inet_addr nIpAddress, pfc_inet_por
 		if(pItem != NULL)
 		{
 			// get a fresh, random id
-			pItem->m_nChallengeId = GetRandomChallenge((int)&pItem, (int)nTimestamp);
+			pItem->m_nChallengeId = GetRandomChallenge(time(NULL), (int)nTimestamp);
 		}
 	}
 
